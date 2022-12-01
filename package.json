@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start:dev": "",
-    "start": "server.js",
+    "start": "",
     "server": "",
     "build": "",
     "install": "",
