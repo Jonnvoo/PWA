@@ -13,6 +13,8 @@ module.exports = () => {
     entry: {
       main: './src/js/index.js',
       install: './src/js/install.js',
+      database: './src/js/database.js',
+      editor: './src/js/editor.js',
     },
     // Output for our bundles
     output: {
@@ -23,19 +25,20 @@ module.exports = () => {
       // Webpack plugin that generates our html file and injects our bundles. 
       new HtmlWebpackPlugin({
         template: './index.html',
+        title:'JATE'
       }),
      
       // Injects our custom service worker
       new InjectManifest({
-        swSrc: './src-sw.js',
-        swDest: 'src-sw.js',
+        swSrc: './service-worker.js',
+        swDest: 'service-worker.js',
       }),
 
       // Creates a manifest.json file.
       new WebpackPwaManifest({
         fingerprints: false,
         inject: true,
-        name: 'JATE',
+        name: 'Just Another Text Editor',
         short_name: 'JATE',
         description: 'Just Another Text Editor',
         background_color: '#225ca3',
@@ -50,10 +53,6 @@ module.exports = () => {
           },
         ],
       }),
-      new InjectManifest({
-				swSrc: './src-sw.js',
-				swDest: 'service-worker.js',
-			}),
     ],
 
     module: {
